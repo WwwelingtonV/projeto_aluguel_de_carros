@@ -7,18 +7,16 @@ abstract class Aluguel {
     private int tempoHabilitado;
     private int diasAlugados;
     private Double valorDiario;
-    private Double valorTotal;
+    protected Double valorTotal; //Protected para poder ser acessado pelas classes filhas
     private Double multaPorHora;
     private int horasAtrasadas;
-    private Double valorTotalMulta;
-    private Double total;
+    protected Double valorTotalMulta; //Protected para poder ser acessado pelas classes filhas
+    protected Double total; //Protected para poder ser acessado pelas classes filhas
 
     //Preencher os dados do cliente que deseja alugar o veículo
     public Aluguel(String nome, int idade, Boolean cnhValida, int tempoHabilitado, int diasAlugados, Double valorDiario,
         Double multaPorHora, int horasAtrasadas){
         validarCliente(idade, cnhValida, tempoHabilitado);
-        // calcularValorTotal(diasAlugados, valorDiario);
-        // calcularMulta(horasAtrasadas, multaPorHora);
         calculoTotal(diasAlugados, horasAtrasadas, valorDiario, multaPorHora);
         this.nome = nome;
         this.idade = idade;
@@ -30,6 +28,7 @@ abstract class Aluguel {
         this.horasAtrasadas = horasAtrasadas;
     }
 
+    //Método Abstrato
     public abstract void seguro();
 
     //Validar se os dados são aptos para alugar e retornar esses IllegalArguments em um TryCatch na main
